@@ -3,7 +3,12 @@
 Linux是一套免费使用和自由传播的类Unix系统。是一个基于POSIX和Unix的**多用户、多任务、多线程、多CPU**的操作系统。  
   支持32位和64位硬件  
 **Linux VS Windows**   
-Linux主要应用在服务器上，而桌面操作是Windows    
+1. Linux主要应用在服务器上，而桌面操作是Windows  
+2. 同样内存，linux上运行速度更快，因为windows会存储一些图形化界面的数据占了部分内容  
+3. linux开源免费。windows收费  
+4. linux对用户的权限管理严格  
+5. windows对用户没有要求，普通用户可以所以操作，安全性较低。而linux对用户要求较高，规避了一些风险  
+6. linux系统安全性更高，没有漏洞、木马等的侵害  
 ##Linux安装  
 以CentOS 6.8为例  
 **版本选择**  
@@ -16,44 +21,48 @@ DVD2：更多的软件包
 4. mininal版：迷你版，精简了更多东西。虚拟机学习，不推荐使用。因不带一些基本的软件，使用起来比较麻烦。  
 5. netinstall：网络安装版，不推荐。   
 **通过SecureCRT连接虚拟机上的Linux**  
->1.通过ifconfig获取操作系统的ip地址  
->2.在SecureCRT上新建连接，在connection下新建name，默认选择SSH2（安全外壳协议Secure Shell缩写）。  
->3.在SSH2 下输入hostname (即连接系统的ip地址)，输入登录系统的用户名连接，输入密码即可
+>1. 通过ifconfig获取操作系统的ip地址  
+>2. 在SecureCRT上新建连接，在connection下新建name，默认选择SSH2（安全外壳协议Secure Shell缩写）。  
+>3. 在SSH2 下输入hostname (即连接系统的ip地址)，输入登录系统的用户名连接，输入密码即可  
+
+
 ##系统启动过程  
 ###启动过程分五个阶段：  
-*内核的引导  
-*运行init  
-*系统初始化  
-*建立终端  
-*用户登录系统  
+* 内核的引导  
+* 运行init  
+* 系统初始化  
+* 建立终端  
+* 用户登录系统  
 ### Linux系统7个运行级别  
-*0：系统停机状态，默认不能设为0，否则不能启动  
-*1：单用户工作状态，root权限。用于系统维护，禁止远程访问  
-*2：多用户状态（没有NFS，Network File System ）  
-*3：完全的多用户状态（有NFS）。登录后进入控制台命令行模式  
-*4：系统未使用，保留  
-*5：X11控制台。登陆后进入图形GUI模式  
-*6：系统正常关闭并重启。默认运行级别不能是6，否则不能正常启动   
+* 0：系统停机状态，默认不能设为0，否则不能启动  
+* 1：单用户工作状态，root权限。用于系统维护，禁止远程访问  
+* 2：多用户状态（没有NFS，Network File System ）  
+* 3：完全的多用户状态（有NFS）。登录后进入控制台命令行模式  
+* 4：系统未使用，保留  
+* 5：X11控制台。登陆后进入图形GUI模式  
+* 6：系统正常关闭并重启。默认运行级别不能是6，否则不能正常启动   
 ###Linux关机  
 正确的关机流程sync>shutdown>reboot>halt  
 关机指令shutdown。可通过man shutdown查看帮助文档   
 **给用户添加sudo权限**    
->1.由普通用户进入超级用户模式（即进入root模式）。在普通模式下输入'su-'，然后输入root密码，回车，进入超级用户模式 
->2.输入命令'visudo' 进入编辑模式。（编辑sudo的配置文件/etc/sudoers）
->3.找到'root ALL=(ALL) ALL'(可能当前页找不到，一直回车)在该行下面添加 Lilybo ALL=(ALL) ALL  
->4.保存退出：w(保存)，exit(退出)  
-
-sync 将数据由内存同步到硬盘中（关闭或重启前一定要执行）  
-shutdown -h 10 'this server will shutdown after 10mins'  10分钟后系统关机，信息会显示在登录用户的当前屏幕 (h是halt缩写，停止的意思)   
-shutdown -h now 立马关机    
-halt 关闭系统   等同于上面命令和poweroff  、init0
-shutdown -h 20:25 系统会在20:25关机  
-shutdown -h +10 十分钟后  
-shutdown -r now 系统立马重启（reboot）    
-reboot 重启，等同意上面命令、init6
-shutdown -r +10 系统1分钟后重启    
+>1. 由普通用户进入超级用户模式（即进入root模式）。在普通模式下输入'su-'，然后输入root密码，回车，进入超级用户模式   
+>2. 输入命令'visudo' 进入编辑模式。（编辑sudo的配置文件/etc/sudoers）  
+>3. 找到'root ALL=(ALL) ALL'(可能当前页找不到，一直回车)在该行下面添加 Lilybo ALL=(ALL) ALL  
+>4. 保存退出：w(保存)，exit(退出)  
+###关机相关命令
+* sync 将数据由内存同步到硬盘中（关闭或重启前一定要执行）  
+* shutdown -h 10 'this server will shutdown after 10mins'  10分钟后系统关机，信息会显示在登录用户的当前屏幕 (h是halt缩写，停止的意思)   
+* shutdown -h now 立马关机    
+* halt   关闭系统   等同于上面命令和poweroff  、init 0（普通用户用命令sodu init 0）
+* shutdown -h 20:25 系统会在20:25关机  
+* shutdown -h +10 十分钟后  
+* shutdown -r now 系统立马重启（reboot）    
+* reboot 重启，等同意上面命令、init6  
+* shutdown -r +10 系统10分钟后重启    
+* shutdown -c 取消正在进行的重启  
+* shutdown -k 10 并非真正关机，只是显示警告信息 。系统将在10分钟后关机  
 ##Linux系统目录结构 
-**ls和ls /区别**  
+**ls和ls / 区别**  
 >ls 是文件列表命令，显示当前目录下的所有文件  
 >ls / '/'表示根目录的意思，该命令意思显示根目录下的文件  
 
@@ -82,7 +91,67 @@ shutdown -r +10 系统1分钟后重启
 **几个比较重要不能修改的目录**  
 /etc 系统配置文件，更改后可能系统不能启动  
 /bin ,/sbin,/usr/bin,/usr/sbin  
-/var 非常重要的目录。系统上跑的程序的日志存在该目录下。在/var/log下
+/var 非常重要的目录。系统上跑的程序的日志存在该目录下。在/var/log下  
+##Linux忘记root密码解决办法
+###通过linux系统直接重置密码  
+1. 重启linux,在3秒内回车，进入GRUB界面  
+2. 选择操作系统，输入e进入  
+3. 向下选择“kerner”内核那一行，输入e   
+4. 在最后一行quiet 后面空格，然后输入single，回车，此时回到选择kerner 界面  
+5. 按b，进入单用户模式，在这里修改密码  
+6. 输入命令passwd  
+7. 输入新密码，回车后，再输入一次密码  
+8. init 6重启系统完成设置  
+###记得root密码，通过远程连接修改密码 
+1. 普通用户登录远程连接时，首先切换到root用户，输入命令su （切换到root）  
+2. 输入root登录密码  
+3. 进入到root下，输入passwd ，输入新密码，回车再次输入新密码。  
+4. 成功后，切回普通用户，su lilybo    
+###普通用户的密码忘记   
+1. 进入管理员模式，su
+2. 在root下输入命令：passwd lilybo,回车  
+3. 输入新密码，确认密码。成功  
+##Linux文件基本属性    
+###ls 命令详解 （list缩写）     
+*  ls -a 列出文件下所有文件，包括已‘.’开头的隐藏文件。和“.”“..”.a 代表all    
+*  ls -A 列出除了“.”和“..”以外的文件
+*  ls -l 或ll 列出文件的详细信息  
+*  ls -s 在每个文件的后面打印文件的大小   
+*  ls -S 以文件大小排序显示 
+*  ls -t 按时间排序显示文件  
+*  ls -R [文件名]（recursion递归）将目录下所有子目录的文件都列出来    
+可以通过命令ll、ls-l来显示一个文件的属性、以及文件所属用户和组  
+drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个一组，表示相应权限）  
+1.第0位。即第一个字符代表文件类型： [d]目录、[-]文件、[/]链接、[b]表示装置文件里面可供储存的接口设备（可随机存取装置）、[c]表示装置文件里面的串行端口设备，如键盘、鼠标（一次性读取装置）   
+2. 以 [rwx] 组合。[r]表示read,可读；[w]write,可写；[x]execute，可执行。当没有选项时，就用[-]代替  
+3. 1~3位，确定属主（文件所有者）拥有的该文件权限  
+4. 4~6位，确定属组（所有者同组用户）拥有的权限  
+5. 7~9位，确定其他用户对该文件的权限  
+###更改文件属性  
+* chgrp：更改文件属组(变更文件或目录的权限)  
+  -[R] 属组名 文件名 R表示递归更改文件属组。在更改某个目录文件的属组时，该目录下的所有文件的属组都会更改   
+* chown：更改文件属主，也可以同时更换属组  
+  -[R] 属主名 文件名
+  -[R] 属主名：属组名 文件名
+  chown lilybo install.log 将install.log文件的拥有者改为lilybo 
+  chown lilybo：lilybo install.log 将install.log的文件的拥有者和属组都改为lilybo  
+* chmod：更改文件9个属性  
+  1. 数字法  chmod -[R] xyz 文件或目录  
+     r：4  w:2 x:1   
+     [-rwxrwx---]  代表rwx:4+2+1=7 rwx:4+2+1=7  ---:0    最后权限数字是770（即xyz）  
+     如：chmod 770 install.log   
+  2. 符号类型   
+     9个权限分别是user（u）、group（g）、others（o）三种身份 。 all(a)代表所有身份  
+     chmod  u/g/o/a +(增加)/-(去除）/=(设定)  r/w/x  
+## Linux文件与目录管理  
+
+      
+          
+
+  
+ 
+
+
 
 
 
