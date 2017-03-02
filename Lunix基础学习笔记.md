@@ -167,7 +167,11 @@ drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个�
 #### cp (复制文件或目录)  
 语法： cp 来源档（source） 目标档（destination）
   
-* cp -a 相当于-pdr.pdr说明参考以下（常用）  
+* cp -a 相当于-pdr.pdr说明参考以下（常用）   
+  例：想把/tmp/test5里面的文件和文件夹复制到 /tmp/test4  
+     cp -a /tmp/test5/* /tmp/test4    
+     想把/tmp/test5目录复制到/tmp/test4 下  
+     cp -a /tmp/test5 /tmp/test4 (结果：/tmp/test4/test5)
 * cp -d 若来源档为连结档的属性（link file ）,则复制连结档属性，而非文件本身  
 * cp -f 强制（force）的意思。若目标文件已经存在，且无法打开。则移除后，再尝试一次 
 * cp -i 若目标档已经存在时，再覆盖时会先询问动作的进行（常用）
