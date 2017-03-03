@@ -157,8 +157,8 @@ drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个�
 * 使用相对路径切换目录：cd ../man    
 #### pwd (显示目前所在目录 print working directory)  
 #### mkdir(创建新目录 make directory) 
-* mkdir -p  文件名 创建目录时将上级目录一起创建起来  
-  例：mkdir -p  test/test1/test2  直接创建三个目录   
+* mkdir -p  文件名 创建目录时将上级目录一起创建起来    
+  例：mkdir -p  test/test1/test2  直接创建三个目录     
 * mkdir -m 权限  文件名 创建文件时，直接配置权限 
   例：mkdir -m 711 test2  
 #### rmdir (删除空的目录 remove directory) 
@@ -179,11 +179,69 @@ drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个�
 * cp -p 连同文件的属性一起复制过去，而非使用默认属性（备份常用）
 * cp -r 递归持续复制，用于目录的复制行为。（常用）
 * cp -s 复制成为符号连接档（symbolic link），即【捷径】文件 
-* cp -u 若destination 比source 旧。才升级destination
+* cp -u 若destination 比source 旧。才升级destination  
+#### rm(移除文件或目录)
+* rm -f (force)直接强行删除，不做任何提示  
+* rm -r 向下递归（recursive），不管有多少目录，一起删除   
+  例：清空文件夹/tmp/a ：rm -rf /tmp/a/*  结果，保留a目录，清空下面的所有文件，文件夹  
+     删除整个a目录。：rm -rf /tmp/a  
+* rm -i 删除前询问是否删除   
+#### mv (移动文件与目录，或修改名称)  
+语法 mv 源文件 目标文件 
+ 
+* mv -f 
+* mv -i 
+* mv -u 若目标文件已经存在，且source 比较新，才会升级（update）
+  例：mv test test1   
+###Linux 文件内容查看 
+#### cat (由第一行开始显示文件内容)
 
-        
+* cat -A 相当于-vET整合，可列出一些特殊字符  
+* cat -b 列出行号。仅针对非空白行，空白行不标记（number-nonblank）
+* cat -n 列出行号，包括空白行也会有行号
+* cat -E 将结尾的断行字符$显示出来（show ends）
+* cat -T 将[tab]键已^|显示出来  
+* cat -v 列出一些看不出来的特殊字符 
+####　tac (从最后一行开始显示) 
+是cat的倒写 
+#### nl (显示行号 number of lines)
+nl 文件：默认只列出非空行号
+* nl -ba:同cat -n 
+#### more (一页一页翻动) 
+语法：more 文件名
+
+* space 空格 ，表示翻页  
+* enter 回车，表示一行一行显示 
+* /a    表示向下搜索a
+* ：f   显示当前文件名和以显示的行数
+* q    退出
+* b    往回翻页  
+#### less (与more类似)
+* ?a  向上查找a
+区别：less 多了向上查询  
+#### head（取出文件前面几行）
+* head 文件 默认显示10行
+* head -n 20 文件  表示显示20行 
+#### tail(显示后几行)
+* tail 文件 默认显示文件后10行 
+* tail -n 20 文件 表示显示文件后20行
+
+##Linux 用户和用户组管理
+### Linux系统用户账号管理
+####添加账号（useradd）
+语法：useradd 选项 用户名 
+
+* -c (comment)指定一段注释性描述 
+* -d 指定用户主目录。如果主目录不存在，可以同时使用-m，创建主目录 
+* -g 指定用户的用户组
+* -G 指定用户的附加组
+* -s 指定用户的登录shell
+* -u 指定用户的用户号，
+
+
+       
           
-
+ 
   
  
 
