@@ -510,7 +510,7 @@ yum 语法：yum [options] [command] [package]
 * yum list：列出所有可安装的软件
 * yum remove <package_name>：删除指定软件
 * yum search <keyword>：查找软件包
-* 清楚缓存：
+* 清除缓存：
  * yum clean packages：清楚缓存目录下的软件包
  * yum clean headers：清楚缓存目录下的headers
  * yum clean oldheaders：清楚缓存目录下旧的headers
