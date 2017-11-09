@@ -128,9 +128,9 @@ drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个�
 * chgrp：更改文件属组(变更文件或目录的权限)  
   -[R] 属组名 文件名 R表示递归更改文件属组。在更改某个目录文件的属组时，该目录下的所有文件的属组都会更改   
 * chown：更改文件属主，也可以同时更换属组  
-  -[R] 属主名 文件名
-  -[R] 属主名：属组名 文件名
-  chown lilybo install.log 将install.log文件的拥有者改为lilybo 
+  -[R] 属主名 文件名  
+  -[R] 属主名：属组名 文件名  
+  chown lilybo install.log 将install.log文件的拥有者改为lilybo   
   chown lilybo：lilybo install.log 将install.log的文件的拥有者和属组都改为lilybo  
 * chmod：更改文件9个属性  
   1. 数字法  chmod -[R] xyz 文件或目录  
@@ -170,8 +170,9 @@ drwxr-xr-x  （10个字符组成，第一个表示文件类型，后面每3个�
 **创建文件命令 touch 文件名**   
 
 #### rmdir (删除空的目录 remove directory) 
-* rmdir -p 目录名 连同上一级空的目录一起删除。p :parents
+* rmdir -p 目录名 连同上一级空的目录一起删除。p :parents  
   例：rmdir -p test1/test2/test3  连同test3的上级空目录一起删除  
+  rmdir test1/test2/test3  只会删除目录test3
   
 #### cp (复制文件或目录)  
 语法： cp 来源档（source） 目标档（destination）
@@ -267,8 +268,9 @@ nl 文件：默认只列出非空行号
 * -r 表示联通用户的主目录一起删除  
  userdel -r lilybo 表示删除lilybo账户，并且删除其主目录  
  
-####修改用户名（usermod）
-命令同usermod
+####修改账号（usermod）
+usermod 选项 用户名
+命令同useradd 
 #### 用户密码的管理（passwd） 
 语法：passwd 选项 用户名（如果不写用户名，默认修改当前用户口令）
 
@@ -297,7 +299,7 @@ groupadd -g 101 group 向系统中增加新组group，且组标识号
 * -g 、-o 用法同添加组
 * -n 新用户组名 更改用户组名
 groupmod -g 1000 -n group3 group2 
-将group2的GID改为1000，组名改为group3
+将group2的标识号改为1000，组名改为group3
 
 #### 如果一个用户属于多个用户组，那么用户可以在用户组中随时切换，以便具有不同用户组的权限
 用户在登录后可以使用命令：newgrp切换到其他用户组
@@ -519,7 +521,7 @@ yum 语法：yum [options] [command] [package]
 * yum list：列出所有可安装的软件
 * yum remove <package_name>：删除指定软件
 * yum search <keyword>：查找软件包
-* 清楚缓存：
+* 清除缓存：
  * yum clean packages：清楚缓存目录下的软件包
  * yum clean headers：清楚缓存目录下的headers
  * yum clean oldheaders：清楚缓存目录下旧的headers
