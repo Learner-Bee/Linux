@@ -32,7 +32,8 @@ DVD2：更多的软件包
 * 运行init  
 * 系统初始化  
 * 建立终端  
-* 用户登录系统  
+* 用户登录系统    
+
 ### Linux系统7个运行级别  
 * 0：系统停机状态，默认不能设为0，否则不能启动  
 * 1：单用户工作状态，root权限。用于系统维护，禁止远程访问  
@@ -40,7 +41,8 @@ DVD2：更多的软件包
 * 3：完全的多用户状态（有NFS）。登录后进入控制台命令行模式  
 * 4：系统未使用，保留  
 * 5：X11控制台。登陆后进入图形GUI模式  
-* 6：系统正常关闭并重启。默认运行级别不能是6，否则不能正常启动   
+* 6：系统正常关闭并重启。默认运行级别不能是6，否则不能正常启动    
+ 
 ###Linux关机  
 正确的关机流程sync>shutdown>reboot>halt  
 关机指令shutdown。可通过man shutdown查看帮助文档   
@@ -48,7 +50,8 @@ DVD2：更多的软件包
 >1. 由普通用户进入超级用户模式（即进入root模式）。在普通模式下输入'su-'，然后输入root密码，回车，进入超级用户模式   
 >2. 输入命令'visudo' 进入编辑模式。（编辑sudo的配置文件/etc/sudoers）  
 >3. 找到'root ALL=(ALL) ALL'(可能当前页找不到，一直回车)在该行下面添加 Lilybo ALL=(ALL) ALL  
->4. 保存退出：w(保存)，exit(退出)  
+>4. 保存退出：w(保存)，exit(退出)    
+
 ###关机相关命令
 * sync 将数据由内存同步到硬盘中（关闭或重启前一定要执行）  
 * shutdown -h 10 'this server will shutdown after 10mins'  10分钟后系统关机，信息会显示在登录用户的当前屏幕 (h是halt缩写，停止的意思)   
@@ -238,6 +241,8 @@ nl 文件：默认只列出非空行号
 #### tail(显示后几行)
 * tail 文件 默认显示文件后10行 
 * tail -n 20 文件 表示显示文件后20行
+* tail -n +20 文件名  显示从20行到结尾的内容
+* tail -f 循环实时监测文件内容变化
 
 ##Linux 用户和用户组管理
 ### Linux系统用户账号管理
@@ -405,6 +410,7 @@ du 后面不加任何选项和文件名时，默认显示当前目录下面的�
 输入命令mkfs 按tab键，显示mkfs支持的文件格式  
 
 * -t 文件系统格式（ext2、ext3、vfat）
+
 ####fsck（filesystem check磁盘检查）
 语法：fsck [-t 文件系统] [-ACay] 装置名称 
 
@@ -496,14 +502,17 @@ vi file ---命令模式---i/o/a---输入模式---esc---命令模式---：---底�
 ####vim的环境变量  
 * ：set nu 输入模式显示行号(行号不会被保存在文档中)
 * ：set nonu 取消行号显示
+
 ##Linux yum命令
 yum（Yellow dog Updater,Modefied）是一个在Fedora和RedHat、SUSE中的Shell前端软件包管理器。                
 yum 语法：yum [options] [command] [package]
 
 * options：可选。包括-h (help)、-y（当安装过程提示选择都选yes）、-q（不显示安装过程）
 * command：要进行的操作
-* package：操作的对象
+* package：操作的对象 
+
 ###yum 常用命令 
+
 * yum check-update ：列出所有可更新的软件
 * yum update：更新所有软件
 * yum install <package_name>：仅安装指定的软件
